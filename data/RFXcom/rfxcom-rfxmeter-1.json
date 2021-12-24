@@ -1,0 +1,35 @@
+{
+  "name": "1-input RFXmeter",
+  "category": "RFXcom",
+  "group": "Power",
+  "description": "1-input RFXmeter",
+  "inputs": [
+    {
+      "name": "count",
+      "description": "CT Power 1",
+      "processList": [
+        {
+          "process": "scale",
+          "arguments": {
+            "type": "ProcessArg::VALUE",
+            "value": 0.001
+          }
+        },
+        {
+          "process": "kwh_accumulator",
+          "arguments": {
+            "type": "ProcessArg::FEEDID",
+            "value": "power"
+          }
+        }
+      ]
+    }
+  ],
+  "feeds": [
+    {
+      "name": "power",
+      "engine": "Engine::PHPTIMESERIES",
+      "unit": "kWh"
+    }
+  ]
+}
